@@ -1,0 +1,13 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    form_themes:
+        - 'tailwind_2_layout.html.twig'
+        - 'form/collection_link_widget.html.twig'
+        - 'form/collection_table_widget.html.twig'
+        - 'form/entity_link_widget.html.twig'
+        - 'form/heading_widget.html.twig'
+        - 'form/text_display_widget.html.twig'
+
+when@test:
+    twig:
+        strict_variables: true

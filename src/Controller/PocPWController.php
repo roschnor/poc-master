@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,10 +16,10 @@ class PocPWController extends AbstractController
     private Request $request;
     private $connection;
 
-    public function __construct(RequestStack $request,EntityManagerInterface $entityManager)
+    public function __construct(RequestStack $request, EntityManagerInterface $entityManager)
     {
         $this->request = $request->getMainRequest();
-        $this->connection = $entityManager->getConnection();;
+        $this->connection = $entityManager->getConnection();
     }
 
     #[Route('/query', name: 'query')]
@@ -28,8 +27,6 @@ class PocPWController extends AbstractController
     {
         $result = $this->connection->fetchAssociative('Select * from muster WHERE id = "'.$this->request->get('id').'"');
 
-    return $this->json($result);
+        return $this->json($result);
     }
-
-
 }
